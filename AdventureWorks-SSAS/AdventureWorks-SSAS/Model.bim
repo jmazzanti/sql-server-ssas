@@ -1,0 +1,853 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "AdventureWorksDW",
+        "connectionString": "Provider=SQLNCLI11;Data Source=localhost;Integrated Security=SSPI;Persist Security Info=false;Initial Catalog=AdventureWorksDW",
+        "impersonationMode": "impersonateAccount",
+        "account": "designmind\\jmazzanti",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimAccount",
+        "columns": [
+          {
+            "name": "AccountKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AccountKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ParentAccountKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ParentAccountKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AccountCodeAlternateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AccountCodeAlternateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ParentAccountCodeAlternateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ParentAccountCodeAlternateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AccountDescription",
+            "dataType": "string",
+            "sourceColumn": "AccountDescription",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "AccountType",
+            "dataType": "string",
+            "sourceColumn": "AccountType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Operator",
+            "dataType": "string",
+            "sourceColumn": "Operator",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomMembers",
+            "dataType": "string",
+            "sourceColumn": "CustomMembers",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ValueType",
+            "dataType": "string",
+            "sourceColumn": "ValueType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CustomMemberOptions",
+            "dataType": "string",
+            "sourceColumn": "CustomMemberOptions",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimAccount",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimAccount].* FROM [dbo].[DimAccount] ",
+              "dataSource": "AdventureWorksDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimAccount].* FROM [dbo].[DimAccount] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimAccount"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "FullDateAlternateKey",
+            "formatString": "MM/dd/yyyy",
+            "sourceProviderType": "DBDate",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"MM/dd/yyyy\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfWeek",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EnglishDayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "EnglishDayNameOfWeek",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SpanishDayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "SpanishDayNameOfWeek",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FrenchDayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "FrenchDayNameOfWeek",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfMonth",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfYear",
+            "sourceProviderType": "SmallInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "WeekNumberOfYear",
+            "formatString": "0",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EnglishMonthName",
+            "dataType": "string",
+            "sourceColumn": "EnglishMonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SpanishMonthName",
+            "dataType": "string",
+            "sourceColumn": "SpanishMonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "FrenchMonthName",
+            "dataType": "string",
+            "sourceColumn": "FrenchMonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumberOfYear",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CalendarQuarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CalendarYear",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear",
+            "sourceProviderType": "SmallInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CalendarSemester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalQuarter",
+            "dataType": "int64",
+            "sourceColumn": "FiscalQuarter",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "SmallInt",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalSemester",
+            "dataType": "int64",
+            "sourceColumn": "FiscalSemester",
+            "sourceProviderType": "UnsignedTinyInt",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDate",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimDate].* FROM [dbo].[DimDate] ",
+              "dataSource": "AdventureWorksDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimDate].* FROM [dbo].[DimDate] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDate"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimDepartmentGroup",
+        "columns": [
+          {
+            "name": "DepartmentGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DepartmentGroupKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ParentDepartmentGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ParentDepartmentGroupKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DepartmentGroupName",
+            "dataType": "string",
+            "sourceColumn": "DepartmentGroupName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDepartmentGroup",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimDepartmentGroup].* FROM [dbo].[DimDepartmentGroup] ",
+              "dataSource": "AdventureWorksDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimDepartmentGroup].* FROM [dbo].[DimDepartmentGroup] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDepartmentGroup"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimOrganization",
+        "columns": [
+          {
+            "name": "OrganizationKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrganizationKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ParentOrganizationKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ParentOrganizationKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "PercentageOfOwnership",
+            "dataType": "string",
+            "sourceColumn": "PercentageOfOwnership",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "OrganizationName",
+            "dataType": "string",
+            "sourceColumn": "OrganizationName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CurrencyKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CurrencyKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimOrganization",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimOrganization].* FROM [dbo].[DimOrganization] ",
+              "dataSource": "AdventureWorksDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimOrganization].* FROM [dbo].[DimOrganization] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimOrganization"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimScenario",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "ScenarioKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ScenarioKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ScenarioName",
+            "dataType": "string",
+            "sourceColumn": "ScenarioName",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimScenario",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimScenario].* FROM [dbo].[DimScenario] ",
+              "dataSource": "AdventureWorksDW"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimScenario].* FROM [dbo].[DimScenario] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimScenario"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "FactFinance",
+        "columns": [
+          {
+            "name": "FinanceKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FinanceKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "OrganizationKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrganizationKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DepartmentGroupKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DepartmentGroupKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ScenarioKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ScenarioKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AccountKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "AccountKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Amount",
+            "dataType": "double",
+            "sourceColumn": "Amount",
+            "formatString": "#,0.00",
+            "sourceProviderType": "Double",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Date",
+            "formatString": "MM/dd/yyyy",
+            "sourceProviderType": "DBTimeStamp",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"MM/dd/yyyy\" /></DateTimes></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactFinance",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[FactFinance].* FROM [dbo].[FactFinance] ",
+              "dataSource": "AdventureWorksDW"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Actual (Base)",
+            "expression": "   CALCULATE(SUM('FactFinance'[Amount]),FILTER(DimScenario,DimScenario[ScenarioName] = \"Actual\"))",
+            "formatString": "#,0.00",
+            "isHidden": true,
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Budget (Base)",
+            "expression": "   CALCULATE(SUM('FactFinance'[Amount]),FILTER(DimScenario,DimScenario[ScenarioName] = \"Budget\"))",
+            "formatString": "#,0.00",
+            "isHidden": true,
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Actual (Period)",
+            "expression": [
+              "",
+              "SWITCH (",
+              "    [Selected Period Code],",
+              "    \"MTD\", TOTALMTD([Actual (Base)],'DimDate'[Date],ALL('DimDate')),",
+              "    \"QTD\", TOTALQTD ( [Actual (Base)], 'DimDate'[Date], ALL ( 'DimDate' ) ),",
+              "    \"YTD\", TOTALYTD ( [Actual (Base)], 'DimDate'[Date], ALL ( 'DimDate' ) )",
+              "",
+              ")"
+            ],
+            "formatString": "#,0.00",
+            "isHidden": true,
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Budget (Period)",
+            "expression": [
+              "",
+              "SWITCH (",
+              "    [Selected Period Code],",
+              "    \"MTD\", TOTALMTD([Budget (Base)],'DimDate'[Date],ALL('DimDate')),",
+              "    \"QTD\", TOTALQTD ( [Budget (Base)], 'DimDate'[Date], ALL ( 'DimDate' ) ),",
+              "    \"YTD\", TOTALYTD ( [Budget (Base)], 'DimDate'[Date], ALL ( 'DimDate' ) )",
+              "",
+              ")"
+            ],
+            "formatString": "#,0.00",
+            "isHidden": true,
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Prior Year (Period)",
+            "expression": [
+              "",
+              "SWITCH (",
+              "    [Selected Period Code],",
+              "    \"MTD\", TOTALMTD( [Actual (Base)], SAMEPERIODLASTYEAR ( 'DimDate'[Date] ) ,ALL('DimDate')),",
+              "    \"QTD\", TOTALQTD (",
+              "        [Actual (Base)],",
+              "        SAMEPERIODLASTYEAR ( 'DimDate'[Date] ),",
+              "        ALL ( 'DimDate' )",
+              "    ),",
+              "    \"YTD\", TOTALYTD (",
+              "        [Actual (Base)],",
+              "        SAMEPERIODLASTYEAR ( 'DimDate'[Date] ),",
+              "        ALL ( 'DimDate' )",
+              "    ))"
+            ],
+            "formatString": "#,0.00",
+            "isHidden": true,
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Actual",
+            "expression": "  DIVIDE([Actual (Period)],[Current Unit Ratio])",
+            "formatString": "#,0.00",
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Budget",
+            "expression": "  DIVIDE([Budget (Period)],[Current Unit Ratio])",
+            "formatString": "#,0.00",
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Prior Year",
+            "expression": "  DIVIDE([Prior Year (Period)],[Current Unit Ratio])",
+            "formatString": "#,0.00",
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Comparative",
+            "expression": [
+              " SWITCH([Current Scenario],",
+              "\"Budget\",[Budget],",
+              "\"Prior Year\",[Prior Year]",
+              ")"
+            ],
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Comparative Variance",
+            "expression": " [Actual] - [Comparative]",
+            "formatString": "#,0.00",
+            "displayFolder": "Layered Measures"
+          },
+          {
+            "name": "Comparative Variance %",
+            "expression": "  DIVIDE([Comparative Variance], [Comparative],BLANK())",
+            "formatString": "#,0.00%;-#,0.00%;#,0.00%"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[FactFinance].* FROM [dbo].[FactFinance] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactFinance"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Periods",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "PeriodCode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[PeriodCode]",
+            "sortByColumn": "PeriodSort"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PeriodName",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[PeriodName]",
+            "sortByColumn": "PeriodSort"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "PeriodSort",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[PeriodSort]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                "",
+                "DATATABLE (",
+                "    \"PeriodCode\", STRING,",
+                "    \"PeriodName\", STRING,",
+                "    \"PeriodSort\", INTEGER,",
+                "    {",
+                "        { \"MTD\", \"Month To Date\", 1 },",
+                "        { \"QTD\", \"Quarter To Date\", 2 },",
+                "        { \"YTD\", \"Year To Date\", 3 }",
+                "          }",
+                ")"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Selected Period Code",
+            "expression": " IF(HASONEVALUE(Periods[PeriodCode]),VALUES(Periods[PeriodCode]),\"MTD\")"
+          }
+        ]
+      },
+      {
+        "name": "Unit Ratio",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Unit Display",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Unit Display]",
+            "sortByColumn": "Unit Ratio"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Unit Ratio",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Unit Ratio]",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "  DATATABLE(\"Unit Display\",STRING,\"Unit Ratio\",INTEGER,{{\"Dollars\",1},{\"Thousands\",1000},{\"Millions\",1000000}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Current Unit Ratio Display",
+            "expression": "  IF(HASONEVALUE('Unit Ratio'[Unit Display]),VALUES('Unit Ratio'[Unit Display]),\"Dollars\")"
+          },
+          {
+            "name": "Current Unit Ratio",
+            "expression": " IF(HASONEVALUE('Unit Ratio'[Unit Ratio]),VALUES('Unit Ratio'[Unit Ratio]),1)"
+          }
+        ]
+      },
+      {
+        "name": "Scenario",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Scenario",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Scenario]",
+            "sortByColumn": "Sort"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Sort",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[Sort]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": " DATATABLE(\"Scenario\",STRING,\"Sort\",INTEGER,{{\"Actual\",1},{\"Budget\",2},{\"Prior Year\",3}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Current Scenario",
+            "expression": "  IF(HASONEVALUE(Scenario[Scenario]),VALUES(Scenario[Scenario]),\"Budget\")"
+          }
+        ]
+      },
+      {
+        "name": "DisplayFormat",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Mode",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Mode]",
+            "sortByColumn": "Sort"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Sort",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[Sort]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": " DATATABLE(\"Mode\",STRING,\"Sort\",INTEGER,{{\"Raw\",1},{\"Formatted\",2}})"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "c770b185-0c11-4882-a17d-abc2b010e87a",
+        "fromTable": "FactFinance",
+        "fromColumn": "OrganizationKey",
+        "toTable": "DimOrganization",
+        "toColumn": "OrganizationKey"
+      },
+      {
+        "name": "9662f055-487e-46ec-a2cf-fdc09637162e",
+        "fromTable": "FactFinance",
+        "fromColumn": "AccountKey",
+        "toTable": "DimAccount",
+        "toColumn": "AccountKey"
+      },
+      {
+        "name": "2a5a1c73-e4de-40f1-9568-fa732496799a",
+        "fromTable": "FactFinance",
+        "fromColumn": "DepartmentGroupKey",
+        "toTable": "DimDepartmentGroup",
+        "toColumn": "DepartmentGroupKey"
+      },
+      {
+        "name": "f41984a8-b3be-4d79-a2a9-bfc31597e7b8",
+        "fromTable": "FactFinance",
+        "fromColumn": "ScenarioKey",
+        "toTable": "DimScenario",
+        "toColumn": "ScenarioKey"
+      },
+      {
+        "name": "9a8713f5-ae78-426d-a26f-bd8770d861da",
+        "fromTable": "FactFinance",
+        "fromColumn": "Date",
+        "toTable": "DimDate",
+        "toColumn": "Date"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
